@@ -10,11 +10,11 @@
 		<title>Audiofy</title>
 		{%endif%}
     <head>
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
       <!--Import materialize.css-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-
+        <!--Import Google Icon Font-->
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       
@@ -25,23 +25,24 @@
     <!-- MOBILE COLLAPSE -->
     <nav class="white z-depth-4">
       <div class="nav-wrapper container ">
-        <a href="/" class="brand-logo black-text ">AudioFy</a>
+        <a href="/" class="brand-logo black-text flow-text color yellow lighten-2"><i class="material-icons left black-text flow-text">music_note</i><i>AudioFy</i></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse black-text"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down black-text">
-          <li><a href="{%url 'blog-home'%}" class="black-text" class="black-text"><i class="material-icons left black-text">home</i> Home</a></li>
-          <li><a href="{%url 'blog-about'%}" class="black-text"><i class="material-icons left">assignment_ind</i> About</a></li>
+          <li><a href="{%url 'blog-home'%}" class="black-text blue lighten-4" class="black-text"><i class="material-icons left black-text">home</i> Home</a></li>
+          <li><a href="{%url 'blog-about'%}" class="black-text blue lighten-3"><i class="material-icons left">assignment_ind</i> About</a></li>
 	        {%if user.is_authenticated%}
 
-	        	<li><a href="{%url 'profile'%}" class="black-text"><i class="material-icons left">verified_user</i>{{user.username}}</a></li>
-	        	<li><a href="{%url 'logout'%}" class="black-text"><i class="material-icons left">power_settings</i> logout</a></li>
+	        	<li><a href="{%url 'profile'%}" class="black-text  green lighten-2"><i class="material-icons left">verified_user</i>{{user.username}}</a></li>
+	        	<li><a href="{%url 'logout'%}" class="black-text  red lighten-1"> logout<i class="material-icons left">directions_walk</i></a></li>
             
 	        {%else%}
-	          <li><a href="{%url 'login'%}" class="black-text">Login</a></li>
-	          <li><a href="{%url 'register'%}" class="black-text">Register</a></li>
+	          <li><a href="{%url 'login'%}" class="black-text green lighten-2"><i class="material-icons left">directions_run</i>Login</a></li>
+	          <li><a href="{%url 'register'%}" class="black-text orange lighten-1"><i class="material-icons left">book</i>Register</a></li>
 	        {%endif%}
-          <li><a href="{%url 'post-create'%}" class="black-text"><i class="material-icons left">create</i> New Post</a></li>
+          <li><a href="{%url 'post-create'%}" class="black-text pink lighten-4"><i class="material-icons left">create</i> New Post</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
+          <li><img src="static/blog/me.jpg"></li>
           <li><a href="{%url 'blog-home'%}" class="black-text">Home</a></li>
           
           <li><a href="{%url 'post-create'%}" class="black-text">New Post</a></li>
@@ -76,17 +77,18 @@
       
       <div class="col s4"><div class="row">
    
-      <div class="card-panel teal">
-        <span class="white-text flow-text">Announcements...
+      <!-- <div class="card-panel teal">
+        <span class=" flow-text">
 
+          <li class="white-text">We will soon be rolling out an all inclusive song download platform, from various server, to get you the most compressed latest jams, in a compressed manner..</li>
+          <li class="white-text"> Join us today by  <a href="{%url 'register'%}" class="white-text z-depth-2 blue lighten-2 black-text">  registering</a> for further updates!!
+  <i class="material-icons left black-text flow-text">music_note</i></li>
 
-
-
-        ..	
         </span>
-      </div>
+      </div> -->
     </div>
   </div>
+
     </div>
 
 
