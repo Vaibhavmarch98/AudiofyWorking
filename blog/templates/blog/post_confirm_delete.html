@@ -1,0 +1,32 @@
+{%extends "blog/base.html"%}
+{% block content %}
+<div style="padding-top: 20px;padding-right: 10px;padding-bottom: 50px;padding-left: 30px;">
+  <form method="post">
+    {% csrf_token %}
+    <h2 class="flow-text">Are you sure? You wanna delete the following post?</h2>
+    <div class="row">
+<div class="left-align">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="{{object.author.profile.image.url}}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                <h3 class="flow-text">    {{object.title}}</h3><p class="flow-text">{{object.content}}</p><br>
+
+
+                <small class="right-align">- by <a href="#">{{ object.author }}, {{ object.date_posted|date:"F d, Y, D "}} </a></small>
+
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+     <a class="btn btn-outline-info green lighten-4 black-text" href="{% url 'post-detail' object.id%}"><i class="material-icons right">cancel</i>Cancel</a>
+	<button class="btn btn-outline-info red" type="submit"><i class="material-icons right">delete</i> Delete</button>
+  </form>
+  </div>
+{% endblock %}

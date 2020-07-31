@@ -1,0 +1,111 @@
+
+
+
+{%load static%}
+  <!DOCTYPE html>
+  <html>
+  {%if title%}
+		<title>Audiofy-{{title}}</title>
+		{%else%}
+		<title>Audiofy</title>
+		{%endif%}
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+    </head>
+
+    <body>
+      
+    <!-- MOBILE COLLAPSE -->
+    <nav class="white z-depth-4">
+      <div class="nav-wrapper container ">
+        <a href="/" class="brand-logo black-text ">AudioFy</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse black-text"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down black-text">
+          <li><a href="{%url 'blog-home'%}" class="black-text" class="black-text"><i class="material-icons left black-text">home</i> Home</a></li>
+          <li><a href="{%url 'blog-about'%}" class="black-text"><i class="material-icons left">assignment_ind</i> About</a></li>
+	        {%if user.is_authenticated%}
+
+	        	<li><a href="{%url 'profile'%}" class="black-text"><i class="material-icons left">verified_user</i>{{user.username}}</a></li>
+	        	<li><a href="{%url 'logout'%}" class="black-text"><i class="material-icons left">power_settings</i> logout</a></li>
+            
+	        {%else%}
+	          <li><a href="{%url 'login'%}" class="black-text">Login</a></li>
+	          <li><a href="{%url 'register'%}" class="black-text">Register</a></li>
+	        {%endif%}
+          <li><a href="{%url 'post-create'%}" class="black-text"><i class="material-icons left">create</i> New Post</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="{%url 'blog-home'%}" class="black-text">Home</a></li>
+          
+          <li><a href="{%url 'post-create'%}" class="black-text">New Post</a></li>
+	        {%if user.is_authenticated%}
+	        	<li><a href="{%url 'profile'%}" class="black-text">{{user.username}}</a></li>
+	        	<li><a href="{%url 'logout'%}" class="black-text">logout</a></li>
+	        {%else%}
+	          <li><a href="{%url 'login'%}" class="black-text">Login</a></li>
+	          <li><a href="{%url 'register'%}" class="black-text">Register</a></li>
+	        {%endif%}
+        </ul>
+      </div>
+    </nav>
+
+
+
+	   		{%if messages%}
+	   		{%for message in messages%}
+	   		  
+			   <a  id="snackbar" onclick="Materialize.toast('Success!!', 4000)"></a>
+
+	   		{%endfor%}
+	   		{%endif%}
+
+      
+	  
+
+
+
+	  <div class="row container">
+      <div class="col s8 "><div>{% block content %}{% endblock %}</div></div>
+      
+      <div class="col s4"><div class="row">
+   
+      <div class="card-panel teal">
+        <span class="white-text flow-text">Announcements...
+
+
+
+
+        ..	
+        </span>
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+</div>
+     
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+       <script>
+       	$(document).ready(function() {
+  		document.getElementById("snackbar").click();
+		}, 1000);
+       	  
+          $(".button-collapse").sideNav();
+       </script>
+    </body>
+  </html>
+
+
+
