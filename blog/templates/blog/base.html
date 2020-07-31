@@ -36,8 +36,8 @@
 	        	<li><a href="{%url 'logout'%}" class="black-text  red lighten-1"> logout<i class="material-icons left">directions_walk</i></a></li>
             
 	        {%else%}
-	          <li><a href="{%url 'login'%}" class="black-text green lighten-2"><i class="material-icons left">directions_run</i>Login</a></li>
-	          <li><a href="{%url 'register'%}" class="black-text orange lighten-1"><i class="material-icons left">book</i>Register</a></li>
+	          <li><a href="{%url 'login'%}" class="black-text green lighten-2">Login</a></li>
+	          <li><a href="{%url 'register'%}" class="black-text orange lighten-1">Register</a></li>
 	        {%endif%}
           <li><a href="{%url 'post-create'%}" class="black-text pink lighten-4"><i class="material-icons left">create</i> New Post</a></li>
         </ul>
@@ -73,9 +73,9 @@
 
 
 	  <div class="row container">
-      <div class="col s8 "><div>{% block content %}{% endblock %}</div></div>
+      <div class="col s11 "><div>{% block content %}{% endblock %}</div></div>
       
-      <div class="col s4"><div class="row">
+      <div class="col s1"><div class="row">
    
       <!-- <div class="card-panel teal">
         <span class=" flow-text">

@@ -4,6 +4,32 @@
 
 
 
+ 
+
+
+
+
+	{%for post in Post%}
+
+<div class="row">
+<div class="left-align">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+              
+            <div class="col s11">
+              <span class="black-text">
+                <h3 class="flow-text"><img src="{{post.author.profile.image.url}}" alt="" class="circle responsive-img" style="width:2em; height:2em;"> <b><u>{{post.title}}</u></b></h3><p class="truncate">{{post.content}}</p><br>
+                <small class="right-align">- by <a href="">{{ post.author }}, {{ post.date_posted|date:"F d, Y, D "}} </a></small>
+                <br><br><a class="btn green lighten-2  z-depth-3 align-right" href="{%url 'post-detail' post.id%}"> Read more..</a>
+
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	{%endfor%}
+
  {%if is_paginated%}
 
 
@@ -38,34 +64,6 @@
   </ul>
 </div>
  {%endif%}
-
-
-
-
-	{%for post in Post%}
-
-<div class="row">
-<div class="left-align">
-        <div class="card-panel grey lighten-5 z-depth-1">
-          <div class="row valign-wrapper">
-            <div class="col s2">
-              <img src="{{post.author.profile.image.url}}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-            </div>
-            <div class="col s10">
-              <span class="black-text">
-                <h3 class="flow-text">{{post.title}}</h3><p class="flow-text truncate">{{post.content}}</p><br>
-                <small class="right-align">- by <a href="{%url 'user-post' post.author.username%}">{{ post.author }}, {{ post.date_posted|date:"F d, Y, D "}} </a></small>
-                <br><br><a class="btn green lighten-2  z-depth-3 align-right" href="{%url 'post-detail' post.id%}"> Read more..</a>
-
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-	{%endfor%}
-
- 
 {%endblock%}
 
 

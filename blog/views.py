@@ -24,7 +24,7 @@ class PostListView(ListView):
 	#ordering attribute
 	ordering = ['-date_posted']
 	#pagination
-	paginate_by = 2
+	paginate_by = 5
 
 class UserPostListView(ListView):
 	model = Post#will tell us what models to query for the view
@@ -33,7 +33,7 @@ class UserPostListView(ListView):
 	context_object_name = 'Post'
 	#ordering attribute
 	#pagination
-	paginate_by = 2
+	paginate_by = 5
 	def get_queryset(self):
 		user = get_object_or_404(User, username= self.kwargs.get('username'))
 		return Post.objects.filter(author=user).order_by('-date_posted')
