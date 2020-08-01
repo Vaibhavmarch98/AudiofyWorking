@@ -4,7 +4,7 @@
 
 
 
-
+<h1 class="flow-text lighten-2 black-text text-centre animated bounce" >Profile Settings</h1>
 
     <div class="col s8">
 
@@ -13,12 +13,12 @@
         <div class="card-image">
           <img src="{{user.profile.image.url}}">
           <span class="card-title"></span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red" onclick=""><i class="material-icons">settings</i></a>
+          <a class="btn-floating halfway-fab waves-effect waves-light red" id="settingsbtn" onclick="document.getElementById('staggered-test').classList.toggle('hide');"><i class="material-icons">settings</i></a>
 
 
         </div>
         <div class="card-content">
-          <h3 class="flow-text">{{user.username}}</h3>
+          <h3 class="flow-text animated slideInDown">{{user.username}}</h3>
         </div>
       </div>
 
@@ -26,52 +26,69 @@
      
 
 
-    <form id="staggered-test" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for field in u_form %}
-          <p>
-            <p class="flow-text">{{ field.label_tag }}</p>
-            {{ field }}
-            {% if field.help_text %}
-              <small class="black-text">{{ field.help_text }}</small>
-            {% endif %}
-            {% for error in field.errors %}
-              <p style="color: red">{{ error }}</p>
-            {% endfor %}
-          </p>
+      <form method="post" id="staggered-test" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in u_form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
         {% endfor %}
-        {% for field in p_form %}
-          <p>
-            {{ field.label_tag }}<br>
-            {{ field }}
-            {% if field.help_text %}
-              <small style="color: grey">{{ field.help_text }}</small>
-            {% endif %}
-            {% for error in field.errors %}
-              <p style="color: red">{{ error }}</p>
-            {% endfor %}
-          </p>
+      </p>
+    {% endfor %}
+    {% for field in p_form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
         {% endfor %}
-        <button class="btn green lighten-2 btn-outline-info" type="submit">Update<i class="material-icons right">send</i></button>
+      </p>
+    {% endfor %}
+    <button class="btn btn-outline-info" type="submit">Update</button>
   </form>
     
 
-     
+     {%if user.post_set.all%}
+     <h3 class="flow-text">Your Posts:</h3>
+     {%endif%}
 
     {%for post in user.post_set.all%}
-  <ul class=" centre-align">
-    <li ><div class="teal lighten-4 hoverable z-depth-3 hoverable flow-text">
-      <h>{{blog.title}}</h>
-      <a>{{ post.author }}</a>
-      <small class="text-muted">{{ post.date_posted|date:"F d, Y, D "}}</small>
-    <h2 class="truncated"><a class="article-title" href="#">{{ post.title }}</a></h2>
-    <p class="article-content flow-text">{{ post.content }}</p>
-  </div></li>
-</ul>
+
+  <div class="row">
+<div class="left-align">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+              
+            <div class="col s11">
+              <span class="black-text">
+                <h3 class="flow-text"><img src="{{post.author.profile.image.url}}" alt="" class="circle responsive-img" style="width:2em; height:2em;"> <b><u>{{post.title}}</u></b></h3><p class="truncate">{{post.content}}</p><br>
+                <small class="right-align">- by <a href="{%url 'user-post' post.author%}">{{ post.author }}, {{ post.date_posted|date:"F d, Y, D "}} </a></small>
+                <br><br><a class="btn green lighten-2  z-depth-3 align-right" href="{%url 'post-detail' post.id%}"> Read more..</a>
+
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   {%endfor%}
 
 
 </div>
+<script>
+function myFunction() {
+  var element = document.getElementById("staggered-test");
+  element.classList.toggle("mystyle");
+}
+</script>
 {%endblock%}
 
 

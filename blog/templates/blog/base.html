@@ -10,7 +10,11 @@
 		<title>Audiofy</title>
 		{%endif%}
     <head>
-      
+      <!-- Animate css -->
+      <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
       <!--Import materialize.css-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
         <!--Import Google Icon Font-->
@@ -42,7 +46,7 @@
           <li><a href="{%url 'post-create'%}" class="black-text pink lighten-4"><i class="material-icons left">create</i> New Post</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
-          <li><img src="static/blog/me.jpg"></li>
+          <li></li>
           <li><a href="{%url 'blog-home'%}" class="black-text">Home</a></li>
           
           <li><a href="{%url 'post-create'%}" class="black-text">New Post</a></li>

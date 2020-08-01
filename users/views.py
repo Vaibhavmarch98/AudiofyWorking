@@ -57,6 +57,8 @@ def register(request):
 
 @login_required#user must be logged in to use it,this is a decorator, after login we are redirected to the profile page
 def profile(request):
+	u_form = UserUpdateForm()
+	p_form = ProfileUpdateForm()
 	if request.method == "POST":
 		u_form = UserUpdateForm(request.POST,
 								instance=request.user)
